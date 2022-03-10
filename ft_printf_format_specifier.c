@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:56:09 by sumsong           #+#    #+#             */
-/*   Updated: 2022/03/09 15:10:00 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/03/10 21:39:40 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,15 @@ int	ft_put_char_str(va_list ap, char c)
 
 int	ft_put_ptr(va_list ap)
 {
-	unsigned char	*ptr;
+	unsigned long	ptr_8;
+	int				cnt;
 
-	ptr = va_arg(ap, unsigned char *);
-	printf("%hhn\n", ptr);
-
-	return (0);
+	ptr_8 = va_arg(ap, unsigned long);
+	if (!ptr_8)
+		return (write(1, "(nil)", 5));
+	cnt = write(1, "0x", 2);
+	ft_putnbr_base("0123456789abcdef", ptr_8, &cnt);
+	return (cnt);
 }
 
 int	ft_put_integer(va_list ap, char c)
@@ -69,28 +72,29 @@ int	ft_put_unsigned(va_list ap)
 	len = 1;
 	nb = va_arg(ap, unsigned int);
 	nb_copy = nb;
-	while (nb_copy > 10)
+	while (nb_copy >= 10)
 	{
 		nb_copy = nb_copy / 10;
 		++len;
 	}
-	space = (char *)calloc(sizeof(char), len + 1);
+	space = (char *)ft_my_calloc(sizeof(char), (len + 1));
 	if (!space)
 		return (0);
 	nb_copy = len;
+	space[len--] = '\0';
 	while (len >= 0)
 	{
-		space[--len] = (nb % 10) + '0';
+		space[len--] = (nb % 10) + '0';
 		nb = nb / 10;
 	}
-	len = write(1, space, nb_copy + 1);
-	// free (space);
+	len = write(1, space, nb_copy);
+	free (space);
 	return (len);
 }
 
 int	ft_put_hex(va_list ap, char c)
 {
-	unsigned int	nb;
+	unsigned long	nb;
 	int				cnt;
 	char			*hex_lower;
 	char			*hex_upper;

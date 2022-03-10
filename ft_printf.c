@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 18:25:04 by sumsong           #+#    #+#             */
-/*   Updated: 2022/03/08 22:38:25 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/03/10 21:02:31 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int	ft_printf(const char *str, ...)
 		if (*str == '%')
 			cnt += ft_after_percent(ap, ++str);
 		else
-		{
-			write(1, &(*str), 1);
-			++cnt;
-		}
+			cnt += ft_putchar(*str);
 		++str;
 	}
 	va_end(ap);
@@ -39,11 +36,11 @@ int	ft_printf(const char *str, ...)
 int	ft_after_percent(va_list ap, const char *str)
 {
 	if (*str == '%')
-		return (write(1, "%", 1));
+		return (ft_putchar('%'));
 	else if (*str == 'c' || *str == 's')
 		return (ft_put_char_str(ap, *str));
 	else if (*str == 'p')
-		return (0);
+		return (ft_put_ptr(ap));
 	else if (*str == 'd' || *str == 'i')
 		return (ft_put_integer(ap, *str));
 	else if (*str == 'u')
