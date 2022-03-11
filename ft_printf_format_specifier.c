@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:56:09 by sumsong           #+#    #+#             */
-/*   Updated: 2022/03/10 21:39:40 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/03/11 14:19:13 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	ft_put_ptr(va_list ap)
 	int				cnt;
 
 	ptr_8 = va_arg(ap, unsigned long);
-	if (!ptr_8)
-		return (write(1, "(nil)", 5));
 	cnt = write(1, "0x", 2);
 	ft_putnbr_base("0123456789abcdef", ptr_8, &cnt);
 	return (cnt);

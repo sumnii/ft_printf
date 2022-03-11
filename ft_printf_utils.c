@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:46:59 by sumsong           #+#    #+#             */
-/*   Updated: 2022/03/10 21:10:20 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/03/11 14:18:44 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_putnbr(long nb, int *cnt)
 		*cnt += ft_putchar(nb + '0');
 }
 
-void	ft_putnbr_base(char *base, long nb, int *cnt)
+void	ft_putnbr_base(char *base, unsigned long nb, int *cnt)
 {
 	if (nb >= 16)
 	{
