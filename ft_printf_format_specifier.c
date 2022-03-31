@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:56:09 by sumsong           #+#    #+#             */
-/*   Updated: 2022/03/11 14:19:13 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:47:56 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,32 +62,30 @@ int	ft_put_integer(va_list ap, char c)
 
 int	ft_put_unsigned(va_list ap)
 {
-	unsigned int	nb;
-	unsigned int	nb_copy;
-	int				len;
-	char			*space;
+	t_uint	u;
+	char	*space;
 
-	len = 1;
-	nb = va_arg(ap, unsigned int);
-	nb_copy = nb;
-	while (nb_copy >= 10)
+	u.len = 1;
+	u.nb = va_arg(ap, unsigned int);
+	u.nb_copy = u.nb;
+	while (u.nb_copy >= 10)
 	{
-		nb_copy = nb_copy / 10;
-		++len;
+		u.nb_copy = u.nb_copy / 10;
+		++u.len;
 	}
-	space = (char *)ft_my_calloc(sizeof(char), (len + 1));
+	space = (char *)ft_my_calloc(sizeof(char), (u.len + 1));
 	if (!space)
 		return (0);
-	nb_copy = len;
-	space[len--] = '\0';
-	while (len >= 0)
+	u.nb_copy = u.len;
+	space[u.len--] = '\0';
+	while (u.len >= 0)
 	{
-		space[len--] = (nb % 10) + '0';
-		nb = nb / 10;
+		space[u.len--] = (u.nb % 10) + '0';
+		u.nb = u.nb / 10;
 	}
-	len = write(1, space, nb_copy);
+	u.len = write(1, space, u.nb_copy);
 	free (space);
-	return (len);
+	return (u.len);
 }
 
 int	ft_put_hex(va_list ap, char c)

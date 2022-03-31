@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 18:25:35 by sumsong           #+#    #+#             */
-/*   Updated: 2022/03/11 14:19:03 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:45:36 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdio.h>
+
+typedef struct s_uint{
+	unsigned int	nb;
+	unsigned int	nb_copy;
+	int				len;
+}				t_uint;
 
 int		ft_printf(const char *str, ...);
 int		ft_after_percent(va_list ap, const char *str);

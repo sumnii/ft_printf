@@ -6,7 +6,7 @@
 #    By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 18:37:48 by sumsong           #+#    #+#              #
-#    Updated: 2022/03/09 15:06:16 by sumsong          ###   ########.fr        #
+#    Updated: 2022/03/09 15:28:13 by sumsong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,4 +35,4 @@ re: fclean all
 $(NAME): $(OBJS) $(HEADER)
 	$(AR) $(ARFLAGS) $@ $(OBJS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

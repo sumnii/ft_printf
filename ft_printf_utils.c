@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:46:59 by sumsong           #+#    #+#             */
-/*   Updated: 2022/03/11 14:18:44 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/03/30 12:35:35 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	*ft_my_calloc(size_t count, size_t size)
 	void	*ary;
 
 	ary = malloc(count * size);
-	if (ary == 0)
-		return (0);
+	if (!ary)
+		return (NULL);
 	ft_bzero(ary, count * size);
 	return (ary);
 }
